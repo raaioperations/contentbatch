@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f4ef">
+    <meta name="description" content="A calm, local-first workspace for capturing and preparing content ideas.">
+    <link rel="icon" href="data:,">
+    <title>ContentBatch — Local Content Studio</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Application sidebar">
+        <a class="brand" href="./" aria-label="ContentBatch home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-copy"><strong>content<span>batch</span></strong><small>LOCAL CONTENT STUDIO</small></span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a class="nav-link is-active" href="#home" data-view="home" aria-current="page">
+            <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h5v-6h3v6h5v-10"/></svg></span><span>Home</span>
+          </a>
+          <a class="nav-link" href="#content" data-view="content">
+            <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.5h14v15H5zM8 8h8M8 12h8M8 16h5"/></svg></span><span>Content</span>
+          </a>
+          <a class="nav-link" href="#batches" data-view="batches">
+            <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4.5" width="7" height="7" rx="1"/><rect x="13" y="4.5" width="7" height="7" rx="1"/><rect x="4" y="13.5" width="7" height="7" rx="1"/><rect x="13" y="13.5" width="7" height="7" rx="1"/></svg></span><span>Batches</span>
+          </a>
+          <a class="nav-link" href="#plan" data-view="plan">
+            <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M4 10h16M8 14h2M13 14h3M8 17h2"/></svg></span><span>Plan</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="local-note-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.7c0 4.4-2.8 7.4-7 8.8-4.2-1.4-7-4.4-7-8.8V6zM9 12l2 2 4-4"/></svg></div>
+          <p><strong>Your work stays here.</strong><br>Content is stored in this browser on this device.</p>
+        </div>
+      </aside>
+
+      <main class="main-shell" id="main-content" tabindex="-1">
+        <header class="topbar">
+          <div class="mobile-brand" aria-label="ContentBatch"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><strong>content<span>batch</span></strong></div>
+          <div class="topbar-spacer"></div><button id="data-tools-button" class="button button-secondary" type="button">Data / Backup</button>
+          <div class="local-indicator"><span class="local-indicator-dot" aria-hidden="true"></span><span>Saved on this device</span></div>
+          <button class="avatar-button" type="button" aria-label="Local workspace">A</button>
+        </header>
+
+        <div class="page-heading" id="page-heading">
+          <div><p class="eyebrow">YOUR WORKSPACE</p><h1 id="page-title">Your content, organized.</h1><p class="page-subtitle" id="page-subtitle">A little structure for everything you want to share.</p></div>
+        </div>
+        <section id="screen" class="screen" aria-label="Workspace"></section>
+        <footer class="desktop-footer"><span>Made for your next good idea.</span><span>Local by default <i aria-hidden="true">·</i> No account needed</span></footer>
+      </main>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Primary navigation">
+      <a class="mobile-nav-link is-active" href="#home" data-view="home" aria-current="page"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3.5 10.5 8.5-7 8.5 7M5.5 9.5v10h5v-6h3v6h5v-10"/></svg></span><span>Home</span></a>
+      <a class="mobile-nav-link" href="#content" data-view="content"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4.5h14v15H5zM8 8h8M8 12h8M8 16h5"/></svg></span><span>Content</span></a>
+      <a class="mobile-nav-link" href="#batches" data-view="batches"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4.5" width="7" height="7" rx="1"/><rect x="13" y="4.5" width="7" height="7" rx="1"/><rect x="4" y="13.5" width="7" height="7" rx="1"/><rect x="13" y="13.5" width="7" height="7" rx="1"/></svg></span><span>Batches</span></a>
+      <a class="mobile-nav-link" href="#plan" data-view="plan"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="15" rx="2"/><path d="M8 3.5v4M16 3.5v4M4 10h16M8 14h2M13 14h3M8 17h2"/></svg></span><span>Plan</span></a>
+    </nav>
+
+    <dialog class="capture-dialog" id="new-content-dialog" aria-labelledby="new-content-title">
+      <form id="new-content-form">
+        <div class="dialog-heading"><span class="dialog-icon" aria-hidden="true">＋</span><div><p class="eyebrow">START WITH AN IDEA</p><h2 id="new-content-title">New content</h2></div></div>
+        <label class="field-label" for="new-content-title-input">Title <span>required</span></label>
+        <input id="new-content-title-input" name="title" class="text-input" type="text" maxlength="240" required autocomplete="off" placeholder="What do you want to share?">
+        <div class="dialog-actions"><button class="button button-secondary" type="button" data-action="cancel-new-content">Cancel</button><button class="button button-primary" type="submit">Create idea <span aria-hidden="true">↗</span></button></div>
+      </form>
+    </dialog>
+
+    <dialog class="capture-dialog" id="batch-dialog" aria-labelledby="batch-dialog-title">
+      <form id="batch-form" novalidate>
+        <div class="dialog-heading"><span class="dialog-icon" aria-hidden="true">▦</span><div><p class="eyebrow">FOCUSED WORK SESSION</p><h2 id="batch-dialog-title">New Batch</h2></div></div>
+        <label class="field-label" for="batch-name-input">Name <span>required</span></label>
+        <input id="batch-name-input" name="name" class="text-input" type="text" maxlength="120" required autocomplete="off" placeholder="e.g. September Product Launch" aria-describedby="batch-form-error">
+        <label class="field-label dialog-field-label" for="batch-description-input">Description <span>optional</span></label>
+        <textarea id="batch-description-input" name="description" class="text-input text-area" rows="4" maxlength="2000" placeholder="What are you preparing in this Batch?"></textarea>
+        <p class="form-error" id="batch-form-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button class="button button-secondary" type="button" data-action="cancel-batch">Cancel</button><button class="button button-primary" type="submit" id="batch-form-submit">Create Batch</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="capture-dialog existing-content-dialog" id="add-content-dialog" aria-labelledby="add-content-title">
+      <div class="dialog-heading"><span class="dialog-icon" aria-hidden="true">＋</span><div><p class="eyebrow">ADD TO WORK SESSION</p><h2 id="add-content-title">Existing content</h2></div></div>
+      <p class="dialog-description">Choose an unassigned item, or deliberately move an item from another Batch.</p>
+      <div id="existing-content-choices"></div>
+      <div class="dialog-actions"><button class="button button-secondary" type="button" data-action="close-existing-content">Done</button></div>
+    </dialog>
+
+    <dialog class="capture-dialog template-dialog" id="template-dialog" aria-labelledby="template-dialog-title">
+      <form id="template-form" novalidate>
+        <div class="dialog-heading"><span class="dialog-icon" aria-hidden="true">▤</span><div><p class="eyebrow">REUSABLE STRUCTURE</p><h2 id="template-dialog-title">New Template</h2></div></div>
+        <label class="field-label" for="template-name">Name <span>required</span></label>
+        <input id="template-name" name="name" class="text-input" type="text" maxlength="120" required autocomplete="off">
+        <div class="template-dialog-grid">
+          <div class="form-field"><label class="field-label" for="template-content-type">Content type</label><select id="template-content-type" name="contentType" class="text-input select-input"><option value="">Not set</option><option value="social-post">Social Post</option><option value="short-video">Short Video</option><option value="long-video">Long Video</option><option value="article">Article/Blog</option><option value="email">Email</option><option value="other">Other</option></select></div>
+          <div class="form-field"><label class="field-label" for="template-channel">Channel</label><select id="template-channel" name="channel" class="text-input select-input"><option value="">Not set</option><option value="instagram">Instagram</option><option value="facebook">Facebook</option><option value="tiktok">TikTok</option><option value="youtube">YouTube</option><option value="linkedin">LinkedIn</option><option value="x">X</option><option value="email">Email</option><option value="blog">Blog/Web</option><option value="other">Other</option></select></div>
+          <label class="form-field custom-field" data-template-custom="customContentType" hidden><span class="field-label">Your content type</span><input class="text-input" name="customContentType" maxlength="80"></label>
+          <label class="form-field custom-field" data-template-custom="customChannel" hidden><span class="field-label">Your channel</span><input class="text-input" name="customChannel" maxlength="80"></label>
+        </div>
+        <label class="field-label dialog-field-label" for="template-hook">Hook / headline</label><input id="template-hook" name="hook" class="text-input" maxlength="2000">
+        <label class="field-label dialog-field-label" for="template-body">Content structure</label><textarea id="template-body" name="body" class="text-input text-area" rows="5" maxlength="20000"></textarea>
+        <label class="field-label dialog-field-label" for="template-cta">Call to action</label><input id="template-cta" name="cta" class="text-input" maxlength="2000">
+        <label class="field-label dialog-field-label" for="template-notes">Notes</label><textarea id="template-notes" name="notes" class="text-input text-area" rows="3" maxlength="20000"></textarea>
+        <label class="field-label dialog-field-label" for="template-tags">Tags <span>comma-separated</span></label><input id="template-tags" name="tags" class="text-input" maxlength="500" placeholder="Education, product">
+        <p class="form-error" id="template-form-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button class="button button-secondary" type="button" data-action="cancel-template">Cancel</button><button class="button button-primary" type="submit" id="template-form-submit">Create Template</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="capture-dialog" id="apply-template-dialog" aria-labelledby="apply-template-title">
+      <form id="apply-template-form" novalidate>
+        <div class="dialog-heading"><span class="dialog-icon" aria-hidden="true">＋</span><div><p class="eyebrow">START A NEW IDEA</p><h2 id="apply-template-title">Use Template</h2></div></div>
+        <label class="field-label" for="apply-template-name">Content title <span>required</span></label>
+        <input id="apply-template-name" class="text-input" name="title" type="text" maxlength="240" required autocomplete="off" placeholder="Give this content its own title">
+        <p class="dialog-description" id="apply-template-context"></p>
+        <p class="form-error" id="apply-template-error" role="alert" hidden></p>
+        <div class="dialog-actions"><button class="button button-secondary" type="button" data-action="cancel-apply-template">Cancel</button><button class="button button-primary" type="submit">Create idea</button></div>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
